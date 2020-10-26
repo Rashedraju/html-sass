@@ -14,12 +14,11 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
-// BREAKPOINTS
-$bp-largest: 75em;
-$bp-large: 56.25em; //900px
-$bp-medium: 50em; //800px
-$bp-small: 37.5em; //600px
-$bp-smallest: 31.25em; //500px
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;   // 1200px
+$bp-large: 62.5em;   // 1000px
+$bp-medium: 50em;    // 800px;
+$bp-small: 37.5em;    // 600px;
 
 *,
 *::before,
@@ -28,34 +27,34 @@ $bp-smallest: 31.25em; //500px
     padding: 0;
     box-sizing: inherit;
 }
+
 html {
     box-sizing: border-box;
-    font-size: 62.5%;
-    @media only screen and (max-width: $bp-largest){
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+
+    @media only screen and (max-width: $bp-largest) {
         font-size: 50%;
     }
 }
+
 body {
     font-family: $font-primary;
-    font-weight: 300;
     color: $color-grey-dark-2;
+    font-weight: 300;
     line-height: 1.6;
 }
 
 .container {
     display: grid;
-    grid-template-rows: minmax(70vh, 80vh) min-content 40vw repeat(3, min-content);
-    grid-template-columns: [side-start] 8rem [side-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
 
-    @media only screen and (max-width: $bp-large){
-        grid-template-rows: 6rem minmax(70vh, 80vh) min-content 40vw repeat(3, min-content);
+    @media only screen and (max-width: $bp-large) {
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
         grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
     }
-    @media only screen and (max-width: $bp-medium){
-        grid-template-rows: 6rem calc(minmax(70vh - 10rem, 80vh - 10rem)) repeat(3, min-content) 40vw repeat(3, min-content);
-    }
-    @media only screen and (max-width: $bp-smallest){
-        grid-template-rows: 6rem calc(100vh - 6rem) repeat(3, min-content) 40vw repeat(3, min-content);
-        grid-template-columns: [full-start] minmax(2rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(2rem, 1fr) [full-end];
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: 6rem calc(100vh - 6rem);
     }
 }
